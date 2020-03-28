@@ -1,0 +1,18 @@
+<% if customers.any? %>
+  <ul class="list-unstyled">
+    <% customers.each do |customer| %>
+      <li class="media">
+        <img class="mr-2 rounded" src="<%= gravatar_url(customer, { size: 50 }) %>" alt="">
+        <div class="media-body">
+          <div>
+            <%= customer.name %> : <%= customer.email %>
+          </div>
+          <div>
+            <p><%= link_to 'ユーザープロファイル', customer_path(customer) %></p>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate customers %>
+<% end %>
